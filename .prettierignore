@@ -1,0 +1,5 @@
+/node_modules
+/db/db.js
+/public/main.js
+/coverage
+/src/util/miscUtil.ts

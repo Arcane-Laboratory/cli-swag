@@ -1,0 +1,9 @@
+/node_modules
+/.prettierignore
+./jest.config.cjs
+./eslintrc.js
+/public/main.js
+/coverage
+/built
+/src/userInterface/commands/commandLoader.js
+*.spec.ts

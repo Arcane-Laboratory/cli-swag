@@ -1,0 +1,24 @@
+{
+  "name": "cli-swag",
+  "version": "0.0.1",
+  "description": "swaggy command line interface",
+  "main": "index.ts",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Arcane-Laboratory/cli-swag.git"
+  },
+  "keywords": [
+    "cli",
+    "fancy",
+    "colors"
+  ],
+  "author": "wizardtower",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Arcane-Laboratory/cli-swag/issues"
+  },
+  "homepage": "https://github.com/Arcane-Laboratory/cli-swag#readme"
+}

@@ -1,7 +1,7 @@
-export { settings } from './src/init'
+export { settings, initializeCLI } from './src/init'
 
 export { CHECK, FORMAT, coloredLogs, enableColoredLogs } from './src/format'
-export {} from './src/animation'
+export { jesterAnim } from './src/animation'
 export {
   HIGHLIGHT_COLOR,
   TEXT_COLOR,
@@ -11,5 +11,5 @@ export {
   reverse,
   underscore,
 } from './src/colors'
-export { warn, error, log, addToLogBuffer, initLogs, logBar } from './src/log'
+export { warn, error, log, logBar, logHold } from './src/log'
 export { command, addCommand, addCommands } from './src/command'

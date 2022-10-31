@@ -5,16 +5,12 @@ import { FORMAT } from './format'
 import { settings } from './init'
 import { sleep } from './util'
 
-let prog = ''
-
-const initLogs = (programName: string) => {
-  prog = programName
-}
+const CONSOLE_SPACING = ' '.repeat(3)
 
 const warn = (title: string, message: string) => {
   const fancyTitle =
     FORMAT.HIGHLIGHT.WARN +
-    prog +
+    settings.programName +
     '_WARNING:' +
     reset +
     ' \n' +
@@ -28,7 +24,7 @@ const warn = (title: string, message: string) => {
 const error = (title: string, message: string) => {
   const fancyTitle =
     FORMAT.HIGHLIGHT.ERROR +
-    prog +
+    settings.programName +
     '_ERROR:' +
     reset +
     ' \n' +
@@ -39,13 +35,13 @@ const error = (title: string, message: string) => {
   log(message, true)
 }
 
-let logHold = false
+let bufferActive = false
 
-const cliFocus = async (promise: Promise<any>) => {
-  logHold = true
+const logHold = async (promise: Promise<any>) => {
+  bufferActive = true
   await promise
-  logHold = false
-  writeLogBuffer
+  bufferActive = false
+  writeLogBuffer()
 }
 
 /**
@@ -53,7 +49,7 @@ const cliFocus = async (promise: Promise<any>) => {
  * @param str
  */
 const log = (str: string, noSpacing?: boolean) => {
-  if (logHold) addToLogBuffer(str, noSpacing)
+  if (bufferActive) addToLogBuffer(str, noSpacing)
   else {
     if (!noSpacing)
       str = CONSOLE_SPACING + str.replace(/\n/g, '\n' + CONSOLE_SPACING)
@@ -112,4 +108,4 @@ export const writeLogBuffer = async () => {
   }
 }
 
-export { initLogs, warn, error, log, logBar, addToLogBuffer }
+export { warn, error, log, logBar, addToLogBuffer, logHold }

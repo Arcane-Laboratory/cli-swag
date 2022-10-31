@@ -7,6 +7,7 @@ interface cliSettings {
   prompt?: string
   promptConfirm?: string
   promptReject?: string
+  programName?: string
 }
 interface cliColorLayout {
   DEFAULT: TEXT_COLOR
@@ -37,13 +38,14 @@ let settings = {
   prompt: '|>',
   promptConfirm: '|=> ',
   promptReject: '|-|',
+  programName: '',
 }
 
-const init = (userSettings: cliSettings) => {
+const initializeCLI = (userSettings: cliSettings) => {
   Object.keys(userSettings).forEach(
     (key) => (settings[key] = userSettings[key])
   )
   if (coloredLogs) enableColoredLogs(settings.format)
 }
 
-export { init, settings, cliSettings, cliColorLayout }
+export { initializeCLI, settings, cliSettings, cliColorLayout }

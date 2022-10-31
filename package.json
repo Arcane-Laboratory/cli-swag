@@ -20,5 +20,17 @@
   "bugs": {
     "url": "https://github.com/Arcane-Laboratory/cli-swag/issues"
   },
-  "homepage": "https://github.com/Arcane-Laboratory/cli-swag#readme"
+  "homepage": "https://github.com/Arcane-Laboratory/cli-swag#readme",
+  "dependencies": {
+    "@types/node": "^18.11.7",
+    "@typescript-eslint/eslint-plugin": "^5.5.0",
+    "@typescript-eslint/parser": "^5.5.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-etc": "^2.0.2",
+    "eslint-plugin-prettier": "^4.2.1",
+    "prettier": "^2.7.1",
+    "ts-node": "^10.8.1",
+    "typescript": "^4.5.2"
+  }
 }

@@ -2,8 +2,9 @@
   "name": "cli-swag",
   "version": "0.0.1",
   "description": "swaggy command line interface",
-  "main": "index.ts",
+  "main": "/built/index.ts",
   "scripts": {
+    "tsc": "tsc",
     "test": "test"
   },
   "repository": {

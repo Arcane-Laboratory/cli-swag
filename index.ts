@@ -13,3 +13,4 @@ export {
 } from './src/colors'
 export { warn, error, log, logBar, logHold } from './src/log'
 export { command, addCommand, addCommands } from './src/command'
+export { cli, runCLI } from './src/cli'

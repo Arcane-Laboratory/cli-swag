@@ -17,13 +17,14 @@ class Err extends Error {
       ' ' +
       title +
       spacedReset
-    super(message)
-    this.name = fancyTitle
+    super('\n' + message)
+    this.name = fancyTitle.trim()
     Err.count++
   }
-  public log() {
-    log(this.name)
-    log(this.message, true)
+  public log(bufferOverride?: boolean) {
+    log('', false, bufferOverride)
+    log(this.name, true, bufferOverride)
+    log(this.message.substring(1).trim(), true, bufferOverride)
   }
 }
 export { Err }

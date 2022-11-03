@@ -35,16 +35,18 @@ exports.logHold = logHold;
  * log function
  * @param str
  */
-const log = (str, noSpacing) => {
-    const splitlines = str.split('\n');
-    splitlines.forEach((line, i) => {
-        if (line.length > init_1.settings.width) {
-            splitlines.splice(i, 1, ...(0, exports.lineLimit)(line, init_1.settings.width));
-        }
-    });
-    if (bufferActive)
+const log = (str, noSpacing, bufferOverride) => {
+    if (bufferActive && bufferOverride !== true)
         addToLogBuffer(str, noSpacing);
     else {
+        const splitlines = str.split('\n');
+        splitlines.forEach((line, i) => {
+            if (line.length > init_1.settings.width) {
+                splitlines.splice(i, 1, ...(0, exports.lineLimit)(line, init_1.settings.width));
+            }
+        });
+        // str = splitlines.join('\n')
+        // this is really hard to do accounting for escape characters...
         if (!noSpacing)
             str = CONSOLE_SPACING + str.replace(/\n/g, '\n' + CONSOLE_SPACING);
         if (cli_1.cli) {

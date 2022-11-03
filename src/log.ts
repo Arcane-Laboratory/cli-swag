@@ -36,15 +36,17 @@ const logHold = async (promise: Promise<any>) => {
  * log function
  * @param str
  */
-const log = (str: string, noSpacing?: boolean) => {
-  const splitlines = str.split('\n')
-  splitlines.forEach((line, i) => {
-    if (line.length > settings.width) {
-      splitlines.splice(i, 1, ...lineLimit(line, settings.width))
-    }
-  })
-  if (bufferActive) addToLogBuffer(str, noSpacing)
+const log = (str: string, noSpacing?: boolean, bufferOverride?: boolean) => {
+  if (bufferActive && bufferOverride !== true) addToLogBuffer(str, noSpacing)
   else {
+    const splitlines = str.split('\n')
+    splitlines.forEach((line, i) => {
+      if (line.length > settings.width) {
+        splitlines.splice(i, 1, ...lineLimit(line, settings.width))
+      }
+    })
+    // str = splitlines.join('\n')
+    // this is really hard to do accounting for escape characters...
     if (!noSpacing)
       str = CONSOLE_SPACING + str.replace(/\n/g, '\n' + CONSOLE_SPACING)
     if (cli) {

@@ -27,7 +27,7 @@
     "url": "https://github.com/Arcane-Laboratory/cli-swag/issues"
   },
   "homepage": "https://github.com/Arcane-Laboratory/cli-swag#readme",
-  "dependencies": {
+  "devDependencies": {
     "@types/node": "^18.11.7",
     "@typescript-eslint/eslint-plugin": "^5.5.0",
     "@typescript-eslint/parser": "^5.5.0",

@@ -35,6 +35,19 @@ const logHold = async (promise: Promise<any>) => {
  * @param str
  */
 const log = (str: string, noSpacing?: boolean) => {
+  const splitlines = str.split('\n')
+  splitlines.forEach((line, i) => {
+    if (line.length > settings.width) {
+      const newLines: string[] = []
+      for (
+        let i = 0, charsLength = line.length;
+        i < charsLength;
+        i += settings.width
+      )
+        newLines.push(line.substring(i, i + settings.width))
+      splitlines.splice(i, 1, ...newLines)
+    }
+  })
   if (bufferActive) addToLogBuffer(str, noSpacing)
   else {
     if (!noSpacing)

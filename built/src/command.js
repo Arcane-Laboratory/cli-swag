@@ -12,7 +12,9 @@ const helpCommand = {
     callback: async () => {
         const helpText = [`There are ${commands.length} commands available to use:`];
         commands.forEach((command, i) => {
-            helpText.push(`${format_1.FORMAT.MAJOR.trim()}${command.name}${format_1.FORMAT.DEFAULT.trim()}${command.description ? ` - ${command.description}` : ''}`);
+            helpText.push(`${format_1.FORMAT.MAJOR.trim()}${command.name}${format_1.FORMAT.DEFAULT.trim()}${command.description
+                ? ` - ${(0, log_1.lineLimit)(command.description, 50).join('\n    ')}`
+                : ''}`);
             if (command.aliases && command.aliases.length > 0)
                 helpText.push(`${format_1.FORMAT.MINOR.trim()}  aka: ${command.aliases.join(', ')}${format_1.FORMAT.DEFAULT.trim()}`);
         });

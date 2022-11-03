@@ -1,7 +1,7 @@
 import { jesterCommand } from './animation'
 import { Err } from './error'
 import { FORMAT } from './format'
-import { log, warn } from './log'
+import { lineLimit, log, warn } from './log'
 
 interface command {
   name: string
@@ -21,7 +21,9 @@ const helpCommand: command = {
     commands.forEach((command, i) => {
       helpText.push(
         `${FORMAT.MAJOR.trim()}${command.name}${FORMAT.DEFAULT.trim()}${
-          command.description ? ` - ${command.description}` : ''
+          command.description
+            ? ` - ${lineLimit(command.description, 50).join('\n    ')}`
+            : ''
         }`
       )
       if (command.aliases && command.aliases.length > 0)

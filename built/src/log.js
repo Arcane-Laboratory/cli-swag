@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logHold = exports.addToLogBuffer = exports.logBar = exports.log = exports.warn = exports.writeLogBuffer = void 0;
+exports.logHold = exports.addToLogBuffer = exports.logBar = exports.log = exports.warn = exports.lineLimit = exports.writeLogBuffer = void 0;
 const readline_1 = require("readline");
 const cli_1 = require("./cli");
 const colors_1 = require("./colors");
@@ -37,10 +37,7 @@ const log = (str, noSpacing) => {
     const splitlines = str.split('\n');
     splitlines.forEach((line, i) => {
         if (line.length > init_1.settings.width) {
-            const newLines = [];
-            for (let i = 0, charsLength = line.length; i < charsLength; i += init_1.settings.width)
-                newLines.push(line.substring(i, i + init_1.settings.width));
-            splitlines.splice(i, 1, ...newLines);
+            splitlines.splice(i, 1, ...(0, exports.lineLimit)(line, init_1.settings.width));
         }
     });
     if (bufferActive)
@@ -98,3 +95,10 @@ const writeLogBuffer = async () => {
     }
 };
 exports.writeLogBuffer = writeLogBuffer;
+const lineLimit = (line, width) => {
+    const newLines = [];
+    for (let i = 0, charsLength = line.length; i < charsLength; i += width)
+        newLines.push(line.substring(i, i + width));
+    return newLines;
+};
+exports.lineLimit = lineLimit;

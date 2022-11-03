@@ -38,14 +38,7 @@ const log = (str: string, noSpacing?: boolean) => {
   const splitlines = str.split('\n')
   splitlines.forEach((line, i) => {
     if (line.length > settings.width) {
-      const newLines: string[] = []
-      for (
-        let i = 0, charsLength = line.length;
-        i < charsLength;
-        i += settings.width
-      )
-        newLines.push(line.substring(i, i + settings.width))
-      splitlines.splice(i, 1, ...newLines)
+      splitlines.splice(i, 1, ...lineLimit(line, settings.width))
     }
   })
   if (bufferActive) addToLogBuffer(str, noSpacing)
@@ -105,6 +98,13 @@ export const writeLogBuffer = async () => {
     await sleep(15)
     log(l.message, l.skipSpacing)
   }
+}
+
+export const lineLimit = (line: string, width): Array<string> => {
+  const newLines: string[] = []
+  for (let i = 0, charsLength = line.length; i < charsLength; i += width)
+    newLines.push(line.substring(i, i + width))
+  return newLines
 }
 
 export { warn, log, logBar, addToLogBuffer, logHold }

@@ -3,6 +3,7 @@ export { settings, initializeCLI } from './src/init'
 export { CHECK, FORMAT, coloredLogs, enableColoredLogs } from './src/format'
 export { jesterAnim } from './src/animation'
 export {
+  COLOR,
   HIGHLIGHT,
   TEXT,
   blink,

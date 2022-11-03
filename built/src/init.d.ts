@@ -1,7 +1,7 @@
 import { COLOR, HIGHLIGHT, TEXT } from './colors';
 import { command } from './command';
 interface cliSettings {
-    color?: COLOR;
+    color?: COLOR | false;
     width?: number;
     prompt?: string;
     promptConfirm?: string;

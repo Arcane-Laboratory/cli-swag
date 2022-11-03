@@ -1,9 +1,9 @@
 import { COLOR, HIGHLIGHT, TEXT } from './colors'
 import { addCommands, command } from './command'
-import { coloredLogs, enableColoredLogs } from './format'
+import { enableColoredLogs } from './format'
 
 interface cliSettings {
-  color?: COLOR
+  color?: COLOR | false
   width?: number
   prompt?: string
   promptConfirm?: string
@@ -39,8 +39,10 @@ const initializeCLI = (
   Object.keys(userSettings).forEach(
     (key) => (settings[key] = userSettings[key])
   )
-  if (coloredLogs) enableColoredLogs(settings.color)
-  if (commands) addCommands(commands)
+  if (userSettings.color != undefined && userSettings.color != false) {
+    enableColoredLogs(userSettings.color)
+    if (commands) addCommands(commands)
+  }
 }
 
 export { initializeCLI, settings, cliSettings, cliColorLayout }

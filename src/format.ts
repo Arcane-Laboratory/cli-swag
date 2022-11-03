@@ -1,7 +1,6 @@
-import { COLOR, HIGHLIGHT, reset, TEXT } from './colors'
-import { cliColorLayout } from './init'
+import { COLOR, HIGHLIGHT, reset, spacedReset, TEXT } from './colors'
+import { cliColorLayout, settings } from './init'
 
-const coloredLogs = true
 let CHECK = ' ✓ '
 
 let FORMAT = {
@@ -23,10 +22,10 @@ const enableColoredLogs = (color: COLOR) => {
     MAJOR: ' ' + reset + TEXT[color],
     MINOR: ' ' + reset + TEXT.dim,
     HIGHLIGHT: {
-      DEFAULT: highlightFormat(HIGHLIGHT.WHITE),
-      MAJOR: highlightFormat(HIGHLIGHT[color]),
-      WARN: highlightFormat(WARN),
-      ERROR: highlightFormat(ERR),
+      DEFAULT: HIGHLIGHT.WHITE,
+      MAJOR: HIGHLIGHT[color],
+      WARN: WARN,
+      ERROR: ERR,
     },
   }
   CHECK = ' ' + TEXT[color] + '✓' + reset + ' '
@@ -38,4 +37,26 @@ const highlightFormat = (color: HIGHLIGHT): string => {
   return formatString
 }
 
-export { cliColorLayout, enableColoredLogs, coloredLogs, FORMAT, CHECK }
+const colorCallout = (string: string): string => {
+  return `${highlightFormat(HIGHLIGHT[settings.color])}${string}${spacedReset}`
+}
+const colorHighlight = (string: string): string => {
+  return `${highlightFormat(HIGHLIGHT.WHITE)}${string}${spacedReset}`
+}
+const colorMajor = (string: string): string => {
+  return `${TEXT[settings.color]}${string}${reset}`
+}
+const colorMinor = (string: string): string => {
+  return `${TEXT.dim}${string}${reset}`
+}
+
+export {
+  cliColorLayout,
+  enableColoredLogs,
+  CHECK,
+  colorCallout,
+  colorHighlight,
+  colorMajor,
+  colorMinor,
+  FORMAT,
+}

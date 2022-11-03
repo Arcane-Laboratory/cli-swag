@@ -15,9 +15,10 @@ let settings = {
 exports.settings = settings;
 const initializeCLI = (userSettings, commands) => {
     Object.keys(userSettings).forEach((key) => (settings[key] = userSettings[key]));
-    if (format_1.coloredLogs)
-        (0, format_1.enableColoredLogs)(settings.color);
-    if (commands)
-        (0, command_1.addCommands)(commands);
+    if (userSettings.color != undefined && userSettings.color != false) {
+        (0, format_1.enableColoredLogs)(userSettings.color);
+        if (commands)
+            (0, command_1.addCommands)(commands);
+    }
 };
 exports.initializeCLI = initializeCLI;

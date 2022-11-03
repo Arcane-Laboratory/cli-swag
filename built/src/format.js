@@ -1,9 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CHECK = exports.FORMAT = exports.coloredLogs = exports.enableColoredLogs = void 0;
+exports.FORMAT = exports.colorMinor = exports.colorMajor = exports.colorHighlight = exports.colorCallout = exports.CHECK = exports.enableColoredLogs = void 0;
 const colors_1 = require("./colors");
-const coloredLogs = true;
-exports.coloredLogs = coloredLogs;
+const init_1 = require("./init");
 let CHECK = ' ✓ ';
 exports.CHECK = CHECK;
 let FORMAT = {
@@ -26,10 +25,10 @@ const enableColoredLogs = (color) => {
         MAJOR: ' ' + colors_1.reset + colors_1.TEXT[color],
         MINOR: ' ' + colors_1.reset + colors_1.TEXT.dim,
         HIGHLIGHT: {
-            DEFAULT: highlightFormat(colors_1.HIGHLIGHT.WHITE),
-            MAJOR: highlightFormat(colors_1.HIGHLIGHT[color]),
-            WARN: highlightFormat(WARN),
-            ERROR: highlightFormat(ERR),
+            DEFAULT: colors_1.HIGHLIGHT.WHITE,
+            MAJOR: colors_1.HIGHLIGHT[color],
+            WARN: WARN,
+            ERROR: ERR,
         },
     };
     exports.CHECK = CHECK = ' ' + colors_1.TEXT[color] + '✓' + colors_1.reset + ' ';
@@ -40,3 +39,19 @@ const highlightFormat = (color) => {
     const formatString = ` ${colors_1.reset}${color}${textColor} `;
     return formatString;
 };
+const colorCallout = (string) => {
+    return `${highlightFormat(colors_1.HIGHLIGHT[init_1.settings.color])}${string}${colors_1.spacedReset}`;
+};
+exports.colorCallout = colorCallout;
+const colorHighlight = (string) => {
+    return `${highlightFormat(colors_1.HIGHLIGHT.WHITE)}${string}${colors_1.spacedReset}`;
+};
+exports.colorHighlight = colorHighlight;
+const colorMajor = (string) => {
+    return `${colors_1.TEXT[init_1.settings.color]}${string}${colors_1.reset}`;
+};
+exports.colorMajor = colorMajor;
+const colorMinor = (string) => {
+    return `${colors_1.TEXT.dim}${string}${colors_1.reset}`;
+};
+exports.colorMinor = colorMinor;

@@ -1,6 +1,5 @@
 import { COLOR } from './colors';
 import { cliColorLayout } from './init';
-declare const coloredLogs = true;
 declare let CHECK: string;
 declare let FORMAT: {
     DEFAULT: string;
@@ -14,5 +13,9 @@ declare let FORMAT: {
     };
 };
 declare const enableColoredLogs: (color: COLOR) => void;
-export { cliColorLayout, enableColoredLogs, coloredLogs, FORMAT, CHECK };
+declare const colorCallout: (string: string) => string;
+declare const colorHighlight: (string: string) => string;
+declare const colorMajor: (string: string) => string;
+declare const colorMinor: (string: string) => string;
+export { cliColorLayout, enableColoredLogs, CHECK, colorCallout, colorHighlight, colorMajor, colorMinor, FORMAT, };
 //# sourceMappingURL=format.d.ts.map

@@ -10,11 +10,13 @@ const CONSOLE_SPACING = ' '.repeat(3)
 const warn = (title: string, message: string) => {
   const fancyTitle =
     FORMAT.HIGHLIGHT.WARN +
+    ' ' +
     settings.programName +
     '_WARNING:' +
     spacedReset +
     ' \n' +
     FORMAT.HIGHLIGHT.WARN +
+    ' ' +
     title +
     spacedReset
   log(fancyTitle)

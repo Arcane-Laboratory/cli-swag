@@ -7,6 +7,7 @@ export {
   colorHighlight,
   colorMajor,
   colorMinor,
+  FORMAT,
 } from './src/format'
 export { jesterAnim } from './src/animation'
 export {

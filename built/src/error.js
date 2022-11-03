@@ -8,11 +8,13 @@ const log_1 = require("./log");
 class Err extends Error {
     constructor(title, message) {
         const fancyTitle = format_1.FORMAT.HIGHLIGHT.ERROR +
+            ' ' +
             init_1.settings.programName +
             '_ERROR:' +
             colors_1.spacedReset +
             ' \n' +
             format_1.FORMAT.HIGHLIGHT.ERROR +
+            ' ' +
             title +
             colors_1.spacedReset;
         super(message);

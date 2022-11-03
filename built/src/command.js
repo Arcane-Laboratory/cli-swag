@@ -4,6 +4,7 @@ exports.addCommands = exports.addCommand = exports.usageInfo = exports.commands 
 const animation_1 = require("./animation");
 const error_1 = require("./error");
 const format_1 = require("./format");
+const init_1 = require("./init");
 const log_1 = require("./log");
 const helpCommand = {
     name: 'help',
@@ -12,7 +13,7 @@ const helpCommand = {
     callback: async () => {
         const helpText = [`There are ${commands.length} commands available to use:`];
         commands.forEach((command, i) => {
-            helpText.push(`$${(0, format_1.colorMajor)(command.name)}${command.description
+            helpText.push(`${init_1.settings.prompt}${(0, format_1.colorMajor)(command.name)}${command.description
                 ? ` - ${(0, log_1.lineLimit)(command.description, 50).join('\n    ')}`
                 : ''}`);
             if (command.aliases && command.aliases.length > 0)

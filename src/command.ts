@@ -1,6 +1,7 @@
 import { jesterCommand } from './animation'
 import { Err } from './error'
 import { colorMajor, colorMinor } from './format'
+import { settings } from './init'
 import { lineLimit, log, warn } from './log'
 
 interface command {
@@ -20,7 +21,7 @@ const helpCommand: command = {
     const helpText = [`There are ${commands.length} commands available to use:`]
     commands.forEach((command, i) => {
       helpText.push(
-        `$${colorMajor(command.name)}${
+        `${settings.prompt}${colorMajor(command.name)}${
           command.description
             ? ` - ${lineLimit(command.description, 50).join('\n    ')}`
             : ''

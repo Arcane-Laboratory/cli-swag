@@ -8,11 +8,13 @@ class Err extends Error {
   constructor(title: string, message: string) {
     const fancyTitle =
       FORMAT.HIGHLIGHT.ERROR +
+      ' ' +
       settings.programName +
       '_ERROR:' +
       spacedReset +
       ' \n' +
       FORMAT.HIGHLIGHT.ERROR +
+      ' ' +
       title +
       spacedReset
     super(message)

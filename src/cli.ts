@@ -1,7 +1,7 @@
 import { clearLine, createInterface, Interface, moveCursor } from 'readline'
 import { reset, spacedReset } from './colors'
 import { command, commands } from './command'
-import { CHECK, FORMAT } from './format'
+import { CHECK, colorCallout, FORMAT } from './format'
 import { settings } from './init'
 import { log } from './log'
 import { sleep } from './util'
@@ -71,12 +71,7 @@ const runCLI = () => {
     }
   })
   log(
-    CHECK +
-      'CLI: LOADED' +
-      FORMAT.HIGHLIGHT.MAJOR +
-      commands.length +
-      spacedReset +
-      'CLI COMMANDS',
+    CHECK + 'CLI: LOADED' + colorCallout(commands.length) + 'CLI COMMANDS',
     true
   )
   return cli

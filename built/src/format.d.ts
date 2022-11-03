@@ -13,9 +13,9 @@ declare let FORMAT: {
     };
 };
 declare const enableColoredLogs: (color: COLOR) => void;
-declare const colorCallout: (string: string) => string;
-declare const colorHighlight: (string: string) => string;
-declare const colorMajor: (string: string) => string;
-declare const colorMinor: (string: string) => string;
+declare const colorCallout: (string: string | number) => string;
+declare const colorHighlight: (string: string | number) => string;
+declare const colorMajor: (string: string | number) => string;
+declare const colorMinor: (string: string | number) => string;
 export { cliColorLayout, enableColoredLogs, CHECK, colorCallout, colorHighlight, colorMajor, colorMinor, FORMAT, };
 //# sourceMappingURL=format.d.ts.map

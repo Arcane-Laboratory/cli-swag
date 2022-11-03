@@ -37,16 +37,16 @@ const highlightFormat = (color: HIGHLIGHT): string => {
   return formatString
 }
 
-const colorCallout = (string: string): string => {
+const colorCallout = (string: string | number): string => {
   return `${highlightFormat(HIGHLIGHT[settings.color])}${string}${spacedReset}`
 }
-const colorHighlight = (string: string): string => {
+const colorHighlight = (string: string | number): string => {
   return `${highlightFormat(HIGHLIGHT.WHITE)}${string}${spacedReset}`
 }
-const colorMajor = (string: string): string => {
+const colorMajor = (string: string | number): string => {
   return `${TEXT[settings.color]}${string}${reset}`
 }
-const colorMinor = (string: string): string => {
+const colorMinor = (string: string | number): string => {
   return `${TEXT.dim}${string}${reset}`
 }
 

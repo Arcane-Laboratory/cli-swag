@@ -10,11 +10,13 @@ const util_1 = require("./util");
 const CONSOLE_SPACING = ' '.repeat(3);
 const warn = (title, message) => {
     const fancyTitle = format_1.FORMAT.HIGHLIGHT.WARN +
+        ' ' +
         init_1.settings.programName +
         '_WARNING:' +
         colors_1.spacedReset +
         ' \n' +
         format_1.FORMAT.HIGHLIGHT.WARN +
+        ' ' +
         title +
         colors_1.spacedReset;
     log(fancyTitle);

@@ -1,4 +1,5 @@
 import { COLOR, HIGHLIGHT, TEXT } from './colors'
+import { addCommands, command } from './command'
 import { coloredLogs, enableColoredLogs } from './format'
 
 interface cliSettings {
@@ -31,11 +32,15 @@ let settings = {
   programName: '',
 }
 
-const initializeCLI = (userSettings: cliSettings) => {
+const initializeCLI = (
+  userSettings: cliSettings,
+  commands?: Array<command>
+) => {
   Object.keys(userSettings).forEach(
     (key) => (settings[key] = userSettings[key])
   )
   if (coloredLogs) enableColoredLogs(settings.color)
+  if (commands) addCommands(commands)
 }
 
 export { initializeCLI, settings, cliSettings, cliColorLayout }

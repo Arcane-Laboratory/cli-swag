@@ -69,7 +69,7 @@ const runCLI = () => {
             cli?.prompt();
         }
     });
-    (0, log_1.log)(format_1.CHECK + 'CLI: LOADED' + (0, format_1.colorCallout)(command_1.commands.length) + 'CLI COMMANDS', true);
+    (0, log_1.log)(format_1.CHECK + 'LOADED' + (0, format_1.colorCallout)(command_1.commands.length) + 'CLI COMMANDS', true);
     return cli;
 };
 exports.runCLI = runCLI;

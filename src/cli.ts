@@ -70,10 +70,7 @@ const runCLI = () => {
       cli?.prompt()
     }
   })
-  log(
-    CHECK + 'CLI: LOADED' + colorCallout(commands.length) + 'CLI COMMANDS',
-    true
-  )
+  log(CHECK + 'LOADED' + colorCallout(commands.length) + 'CLI COMMANDS', true)
   return cli
 }
 

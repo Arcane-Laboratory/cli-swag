@@ -1,6 +1,7 @@
 import { spacedReset } from './colors'
 import { FORMAT } from './format'
 import { settings } from './init'
+import { log } from './log'
 
 class Err extends Error {
   public static count = 0
@@ -17,6 +18,10 @@ class Err extends Error {
     super(fancyTitle)
     this.message = message
     Err.count++
+  }
+  public log() {
+    log(this.name)
+    log(this.message, true)
   }
 }
 export { Err }

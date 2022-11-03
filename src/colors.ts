@@ -5,35 +5,46 @@ const hidden = '\x1b[8m'
 const reset = '\x1b[0m'
 const spacedReset = ` ${reset} `
 
-enum TEXT_COLOR {
-  black = '\x1b[30m',
-  red = '\x1b[31m',
-  green = '\x1b[32m',
-  yellow = '\x1b[33m',
-  blue = '\x1b[34m',
-  magenta = '\x1b[35m',
-  cyan = '\x1b[36m',
-  white = '\x1b[37m',
+type COLOR =
+  | 'BLACK'
+  | 'RED'
+  | 'GREEN'
+  | 'YELLOW'
+  | 'BLUE'
+  | 'MAGENTA'
+  | 'CYAN'
+  | 'WHITE'
+
+enum TEXT {
+  BLACK = '\x1b[30m',
+  RED = '\x1b[31m',
+  GREEN = '\x1b[32m',
+  YELLOW = '\x1b[33m',
+  BLUE = '\x1b[34m',
+  MAGENTA = '\x1b[35m',
+  CYAN = '\x1b[36m',
+  WHITE = '\x1b[37m',
   reset = '\x1b[0m',
   bright = '\x1b[1m',
   // dim = '\x1b[2m',
   dim = '\x1b[30m',
 }
 
-enum HIGHLIGHT_COLOR {
-  BGblack = '\x1b[40m',
-  BGred = '\x1b[41m',
-  BGgreen = '\x1b[42m',
-  BGyellow = '\x1b[43m',
-  BGblue = '\x1b[44m',
-  BGmagenta = '\x1b[45m',
-  BGcyan = '\x1b[46m',
-  BGwhite = '\x1b[47m',
+enum HIGHLIGHT {
+  BLACK = '\x1b[40m',
+  RED = '\x1b[41m',
+  GREEN = '\x1b[42m',
+  YELLOW = '\x1b[43m',
+  BLUE = '\x1b[44m',
+  MAGENTA = '\x1b[45m',
+  CYAN = '\x1b[46m',
+  WHITE = '\x1b[47m',
 }
 
 export {
-  TEXT_COLOR,
-  HIGHLIGHT_COLOR,
+  COLOR,
+  TEXT,
+  HIGHLIGHT,
   underscore,
   hidden,
   blink,

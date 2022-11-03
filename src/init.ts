@@ -1,8 +1,8 @@
-import { HIGHLIGHT_COLOR, TEXT_COLOR } from './colors'
+import { COLOR, HIGHLIGHT, TEXT } from './colors'
 import { coloredLogs, enableColoredLogs } from './format'
 
 interface cliSettings {
-  format?: cliColorLayout
+  color: COLOR
   width?: number
   prompt?: string
   promptConfirm?: string
@@ -10,31 +10,21 @@ interface cliSettings {
   programName?: string
 }
 interface cliColorLayout {
-  DEFAULT: TEXT_COLOR
-  MAJOR: TEXT_COLOR
-  MINOR: TEXT_COLOR
+  DEFAULT: TEXT
+  MAJOR: TEXT
+  MINOR: TEXT
   HIGHLIGHT: {
-    DEFAULT: HIGHLIGHT_COLOR
-    MAJOR: HIGHLIGHT_COLOR
-    WARN?: HIGHLIGHT_COLOR
-    ERROR?: HIGHLIGHT_COLOR
+    DEFAULT: HIGHLIGHT
+    MAJOR: HIGHLIGHT
+    WARN?: HIGHLIGHT
+    ERROR?: HIGHLIGHT
   }
 }
 
-const defaultFormat: cliColorLayout = {
-  DEFAULT: TEXT_COLOR.reset,
-  MAJOR: TEXT_COLOR.green,
-  MINOR: TEXT_COLOR.dim,
-  HIGHLIGHT: {
-    DEFAULT: HIGHLIGHT_COLOR.BGwhite,
-    MAJOR: HIGHLIGHT_COLOR.BGgreen,
-  },
-}
-
+const defaultColor: COLOR = 'GREEN'
 let settings = {
-  format: defaultFormat,
+  color: defaultColor,
   width: 70,
-  colorLog: true,
   prompt: '|> ',
   promptConfirm: '|=>',
   promptReject: '|-|',
@@ -45,7 +35,7 @@ const initializeCLI = (userSettings: cliSettings) => {
   Object.keys(userSettings).forEach(
     (key) => (settings[key] = userSettings[key])
   )
-  if (coloredLogs) enableColoredLogs(settings.format)
+  if (coloredLogs) enableColoredLogs(settings.color)
 }
 
 export { initializeCLI, settings, cliSettings, cliColorLayout }

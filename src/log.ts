@@ -1,6 +1,6 @@
 import { clearLine, cursorTo } from 'readline'
 import { cli } from './cli'
-import { reset } from './colors'
+import { HIGHLIGHT, reset } from './colors'
 import { FORMAT } from './format'
 import { settings } from './init'
 import { sleep } from './util'

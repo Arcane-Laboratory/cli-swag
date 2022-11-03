@@ -1,6 +1,6 @@
 import { clearLine, cursorTo } from 'readline'
 import { cli } from './cli'
-import { HIGHLIGHT, reset } from './colors'
+import { HIGHLIGHT, reset, spacedReset } from './colors'
 import { FORMAT } from './format'
 import { settings } from './init'
 import { sleep } from './util'
@@ -12,11 +12,11 @@ const warn = (title: string, message: string) => {
     FORMAT.HIGHLIGHT.WARN +
     settings.programName +
     '_WARNING:' +
-    reset +
+    spacedReset +
     ' \n' +
     FORMAT.HIGHLIGHT.WARN +
     title +
-    reset
+    spacedReset
   log(fancyTitle)
   log(message, true)
 }

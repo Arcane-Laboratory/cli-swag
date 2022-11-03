@@ -1,6 +1,7 @@
 import { jesterCommand } from './animation'
+import { Err } from './error'
 import { FORMAT } from './format'
-import { log } from './log'
+import { log, warn } from './log'
 
 interface command {
   name: string
@@ -35,6 +36,17 @@ const helpCommand: command = {
   },
 }
 
+const errTest: command = {
+  callback: async () => {
+    warn('Test Warning', 'this warning is for checking formatting, etc.')
+    new Err('Test Error', 'this warning is for checking formatting, etc.').log()
+    return
+  },
+  name: 'error',
+  aliases: ['warn', 'testError'],
+  description: 'display a test warning and a test error message',
+}
+
 const usageInfo = (command: command): string => {
   const { name, aliases, description, maxArgs, minArgs } = command
   const str = [name]
@@ -57,7 +69,7 @@ const usageInfo = (command: command): string => {
   return str.join('\n  ')
 }
 
-const commands: Array<command> = [helpCommand, jesterCommand]
+const commands: Array<command> = [helpCommand, jesterCommand, errTest]
 
 const addCommand = (command: command) => {
   commands.push(command)

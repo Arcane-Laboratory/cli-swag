@@ -15,8 +15,8 @@ class Err extends Error {
       FORMAT.HIGHLIGHT.ERROR +
       title +
       spacedReset
-    super(fancyTitle)
-    this.message = message
+    super(message)
+    this.name = fancyTitle
     Err.count++
   }
   public log() {

@@ -2,7 +2,7 @@ import { COLOR, HIGHLIGHT, TEXT } from './colors'
 import { coloredLogs, enableColoredLogs } from './format'
 
 interface cliSettings {
-  color: COLOR
+  color?: COLOR
   width?: number
   prompt?: string
   promptConfirm?: string

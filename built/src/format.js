@@ -40,18 +40,26 @@ const highlightFormat = (color) => {
     return formatString;
 };
 const colorCallout = (string) => {
+    if (init_1.settings.color == undefined || init_1.settings.color == false)
+        return ` ${string} `;
     return `${highlightFormat(colors_1.HIGHLIGHT[init_1.settings.color])}${string}${colors_1.spacedReset}`;
 };
 exports.colorCallout = colorCallout;
 const colorHighlight = (string) => {
+    if (init_1.settings.color == undefined || init_1.settings.color == false)
+        return ` ${string} `;
     return `${highlightFormat(colors_1.HIGHLIGHT.WHITE)}${string}${colors_1.spacedReset}`;
 };
 exports.colorHighlight = colorHighlight;
 const colorMajor = (string) => {
+    if (init_1.settings.color == undefined || init_1.settings.color == false)
+        return string.toString();
     return `${colors_1.TEXT[init_1.settings.color]}${string}${colors_1.reset}`;
 };
 exports.colorMajor = colorMajor;
 const colorMinor = (string) => {
+    if (init_1.settings.color == undefined || init_1.settings.color == false)
+        return string.toString();
     return `${colors_1.TEXT.dim}${string}${colors_1.reset}`;
 };
 exports.colorMinor = colorMinor;

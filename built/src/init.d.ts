@@ -8,6 +8,14 @@ interface cliSettings {
     promptReject?: string;
     programName?: string;
 }
+interface cliSettingsFull {
+    color: COLOR | false;
+    width: number;
+    prompt: string;
+    promptConfirm: string;
+    promptReject: string;
+    programName: string;
+}
 interface cliColorLayout {
     DEFAULT: TEXT;
     MAJOR: TEXT;
@@ -19,14 +27,7 @@ interface cliColorLayout {
         ERROR?: HIGHLIGHT;
     };
 }
-declare let settings: {
-    color: "BLUE";
-    width: number;
-    prompt: string;
-    promptConfirm: string;
-    promptReject: string;
-    programName: string;
-};
+declare let settings: cliSettingsFull;
 declare const initializeCLI: (userSettings: cliSettings, commands?: Array<command>) => void;
 export { initializeCLI, settings, cliSettings, cliColorLayout };
 //# sourceMappingURL=init.d.ts.map

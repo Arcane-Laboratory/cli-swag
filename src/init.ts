@@ -10,6 +10,14 @@ interface cliSettings {
   promptReject?: string
   programName?: string
 }
+interface cliSettingsFull {
+  color: COLOR | false
+  width: number
+  prompt: string
+  promptConfirm: string
+  promptReject: string
+  programName: string
+}
 interface cliColorLayout {
   DEFAULT: TEXT
   MAJOR: TEXT
@@ -23,7 +31,7 @@ interface cliColorLayout {
 }
 
 const defaultColor: COLOR = 'BLUE'
-let settings = {
+let settings: cliSettingsFull = {
   color: defaultColor,
   width: 70,
   prompt: '|> ',

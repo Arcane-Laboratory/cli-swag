@@ -38,15 +38,23 @@ const highlightFormat = (color: HIGHLIGHT): string => {
 }
 
 const colorCallout = (string: string | number): string => {
+  if (settings.color == undefined || settings.color == false)
+    return ` ${string} `
   return `${highlightFormat(HIGHLIGHT[settings.color])}${string}${spacedReset}`
 }
 const colorHighlight = (string: string | number): string => {
+  if (settings.color == undefined || settings.color == false)
+    return ` ${string} `
   return `${highlightFormat(HIGHLIGHT.WHITE)}${string}${spacedReset}`
 }
 const colorMajor = (string: string | number): string => {
+  if (settings.color == undefined || settings.color == false)
+    return string.toString()
   return `${TEXT[settings.color]}${string}${reset}`
 }
 const colorMinor = (string: string | number): string => {
+  if (settings.color == undefined || settings.color == false)
+    return string.toString()
   return `${TEXT.dim}${string}${reset}`
 }
 

@@ -21,20 +21,6 @@ const warn = (title: string, message: string) => {
   log(message, true)
 }
 
-const error = (title: string, message: string) => {
-  const fancyTitle =
-    FORMAT.HIGHLIGHT.ERROR +
-    settings.programName +
-    '_ERROR:' +
-    reset +
-    ' \n' +
-    FORMAT.HIGHLIGHT.ERROR +
-    title +
-    reset
-  log(fancyTitle)
-  log(message, true)
-}
-
 let bufferActive = false
 
 const logHold = async (promise: Promise<any>) => {
@@ -108,4 +94,4 @@ export const writeLogBuffer = async () => {
   }
 }
 
-export { warn, error, log, logBar, addToLogBuffer, logHold }
+export { warn, log, logBar, addToLogBuffer, logHold }

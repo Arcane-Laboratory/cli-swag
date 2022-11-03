@@ -13,6 +13,7 @@ export {
   reverse,
   underscore,
 } from './src/colors'
-export { warn, error, log, logBar, logHold } from './src/log'
+export { warn, log, logBar, logHold } from './src/log'
+export { Err } from './src/error'
 export { command, addCommand, addCommands } from './src/command'
 export { cli, runCLI } from './src/cli'

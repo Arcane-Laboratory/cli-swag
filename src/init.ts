@@ -21,7 +21,7 @@ interface cliColorLayout {
   }
 }
 
-const defaultColor: COLOR = 'GREEN'
+const defaultColor: COLOR = 'BLUE'
 let settings = {
   color: defaultColor,
   width: 70,

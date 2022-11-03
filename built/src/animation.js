@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.jesterAnim = void 0;
+exports.jesterCommand = exports.jesterAnim = void 0;
 const util_1 = require("./util");
 const JESTER_SMUG = '       O\n      /~\\\n     /~~~\\\n    /~~~~~\\\n   (  ͡¬‿¬  )';
 const JESTER_HAH = '       O\n      /~\\\n     /~~~\\\n    /~~~~~\\\n   (  ͡ᵔ́∀ᵔ̀  )';
@@ -45,3 +45,11 @@ const jesterAnim = async () => {
     await (0, util_1.sleep)(1000);
 };
 exports.jesterAnim = jesterAnim;
+exports.jesterCommand = {
+    name: 'jester',
+    description: 'summons the jester',
+    callback: async () => {
+        await (0, exports.jesterAnim)();
+        return true;
+    },
+};

@@ -1,5 +1,5 @@
 import { clearLine, createInterface, Interface, moveCursor } from 'readline'
-import { reset } from './colors'
+import { reset, spacedReset } from './colors'
 import { command, commands } from './command'
 import { CHECK, FORMAT } from './format'
 import { settings } from './init'
@@ -26,12 +26,22 @@ const runCLI = () => {
   })
 
   cli.on('line', async (line) => {
+    line = line.trim()
     let foundCommand: command | undefined
+    if (line == '') {
+      moveCursor(process.stdout, 0, -1)
+      cli?.prompt()
+      return
+    }
     commands.forEach((cliCommand) => {
-      if (cliCommand.name == line.trim()) {
+      if (cliCommand.name == line) {
         foundCommand = cliCommand
         return
       }
+      cliCommand.aliases?.forEach((alias) => {
+        if (alias == line) foundCommand = cliCommand
+        return
+      })
     })
     if (foundCommand) {
       await sleep(200)
@@ -39,7 +49,7 @@ const runCLI = () => {
       moveCursor(process.stdout, 0, -1)
       clearLine(process.stdout, 0)
       process.stdout.write(
-        FORMAT.MAJOR + settings.promptConfirm + line + reset + '\n'
+        FORMAT.MAJOR + settings.promptConfirm + line + spacedReset + '\n'
       )
       await sleep(200)
       await foundCommand.callback()
@@ -51,10 +61,10 @@ const runCLI = () => {
       process.stdout.write(
         FORMAT.MAJOR +
           settings.promptReject +
-          FORMAT.MINOR +
+          FORMAT.MINOR.trim() +
           line +
-          reset +
-          '/n'
+          spacedReset +
+          '\n'
       )
       log(`No command found '${line}'. Use 'help' for a list of commands`)
       cli?.prompt()
@@ -65,7 +75,7 @@ const runCLI = () => {
       'CLI: LOADED' +
       FORMAT.HIGHLIGHT.MAJOR +
       commands.length +
-      reset +
+      spacedReset +
       'CLI COMMANDS',
     true
   )

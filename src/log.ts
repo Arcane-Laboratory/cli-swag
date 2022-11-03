@@ -41,7 +41,7 @@ const logHold = async (promise: Promise<any>) => {
   bufferActive = true
   await promise
   bufferActive = false
-  writeLogBuffer()
+  return writeLogBuffer()
 }
 
 /**

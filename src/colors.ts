@@ -3,6 +3,7 @@ const blink = '\x1b[5m'
 const reverse = '\x1b[7m'
 const hidden = '\x1b[8m'
 const reset = '\x1b[0m'
+const spacedReset = ` ${reset} `
 
 enum TEXT_COLOR {
   black = '\x1b[30m',
@@ -15,7 +16,8 @@ enum TEXT_COLOR {
   white = '\x1b[37m',
   reset = '\x1b[0m',
   bright = '\x1b[1m',
-  dim = '\x1b[2m',
+  // dim = '\x1b[2m',
+  dim = '\x1b[30m',
 }
 
 enum HIGHLIGHT_COLOR {
@@ -37,4 +39,5 @@ export {
   blink,
   reverse,
   reset,
+  spacedReset,
 }

@@ -36,7 +36,8 @@ const enableColoredLogs = (format: cliColorLayout) => {
 const highlightFormat = (color: HIGHLIGHT_COLOR): string => {
   const textColor =
     color == HIGHLIGHT_COLOR.BGblack ? TEXT_COLOR.white : TEXT_COLOR.black
-  return ' ' + reset + color + textColor + ' '
+  const formatString = ` ${reset}${color}${textColor} `
+  return formatString
 }
 
 export { cliColorLayout, enableColoredLogs, coloredLogs, FORMAT, CHECK }

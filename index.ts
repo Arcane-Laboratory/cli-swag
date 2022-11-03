@@ -8,6 +8,7 @@ export {
   blink,
   hidden,
   reset,
+  spacedReset,
   reverse,
   underscore,
 } from './src/colors'

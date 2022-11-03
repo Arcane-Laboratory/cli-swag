@@ -1,3 +1,4 @@
+import { command, commands } from './command'
 import { sleep } from './util'
 
 const JESTER_SMUG =
@@ -46,4 +47,13 @@ export const jesterAnim = async () => {
   process.stdout.cursorTo(0)
   process.stdout.write('\n')
   await sleep(1000)
+}
+
+export const jesterCommand: command = {
+  name: 'jester',
+  description: 'summons the jester',
+  callback: async () => {
+    await jesterAnim()
+    return true
+  },
 }

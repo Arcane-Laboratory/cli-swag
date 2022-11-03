@@ -3,6 +3,7 @@ declare const blink = "\u001B[5m";
 declare const reverse = "\u001B[7m";
 declare const hidden = "\u001B[8m";
 declare const reset = "\u001B[0m";
+declare const spacedReset: string;
 declare enum TEXT_COLOR {
     black = "\u001B[30m",
     red = "\u001B[31m",
@@ -14,7 +15,7 @@ declare enum TEXT_COLOR {
     white = "\u001B[37m",
     reset = "\u001B[0m",
     bright = "\u001B[1m",
-    dim = "\u001B[2m"
+    dim = "\u001B[30m"
 }
 declare enum HIGHLIGHT_COLOR {
     BGblack = "\u001B[40m",
@@ -26,5 +27,5 @@ declare enum HIGHLIGHT_COLOR {
     BGcyan = "\u001B[46m",
     BGwhite = "\u001B[47m"
 }
-export { TEXT_COLOR, HIGHLIGHT_COLOR, underscore, hidden, blink, reverse, reset, };
+export { TEXT_COLOR, HIGHLIGHT_COLOR, underscore, hidden, blink, reverse, reset, spacedReset, };
 //# sourceMappingURL=colors.d.ts.map

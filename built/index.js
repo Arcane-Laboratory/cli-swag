@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.runCLI = exports.cli = exports.addCommands = exports.addCommand = exports.logHold = exports.logBar = exports.log = exports.error = exports.warn = exports.underscore = exports.reverse = exports.reset = exports.hidden = exports.blink = exports.TEXT_COLOR = exports.HIGHLIGHT_COLOR = exports.jesterAnim = exports.enableColoredLogs = exports.coloredLogs = exports.FORMAT = exports.CHECK = exports.initializeCLI = exports.settings = void 0;
+exports.runCLI = exports.cli = exports.addCommands = exports.addCommand = exports.logHold = exports.logBar = exports.log = exports.error = exports.warn = exports.underscore = exports.reverse = exports.spacedReset = exports.reset = exports.hidden = exports.blink = exports.TEXT_COLOR = exports.HIGHLIGHT_COLOR = exports.jesterAnim = exports.enableColoredLogs = exports.coloredLogs = exports.FORMAT = exports.CHECK = exports.initializeCLI = exports.settings = void 0;
 var init_1 = require("./src/init");
 Object.defineProperty(exports, "settings", { enumerable: true, get: function () { return init_1.settings; } });
 Object.defineProperty(exports, "initializeCLI", { enumerable: true, get: function () { return init_1.initializeCLI; } });
@@ -17,6 +17,7 @@ Object.defineProperty(exports, "TEXT_COLOR", { enumerable: true, get: function (
 Object.defineProperty(exports, "blink", { enumerable: true, get: function () { return colors_1.blink; } });
 Object.defineProperty(exports, "hidden", { enumerable: true, get: function () { return colors_1.hidden; } });
 Object.defineProperty(exports, "reset", { enumerable: true, get: function () { return colors_1.reset; } });
+Object.defineProperty(exports, "spacedReset", { enumerable: true, get: function () { return colors_1.spacedReset; } });
 Object.defineProperty(exports, "reverse", { enumerable: true, get: function () { return colors_1.reverse; } });
 Object.defineProperty(exports, "underscore", { enumerable: true, get: function () { return colors_1.underscore; } });
 var log_1 = require("./src/log");

@@ -39,7 +39,7 @@ const logHold = async (promise) => {
     bufferActive = true;
     await promise;
     bufferActive = false;
-    (0, exports.writeLogBuffer)();
+    return (0, exports.writeLogBuffer)();
 };
 exports.logHold = logHold;
 /**

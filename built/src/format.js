@@ -38,5 +38,6 @@ const enableColoredLogs = (format) => {
 exports.enableColoredLogs = enableColoredLogs;
 const highlightFormat = (color) => {
     const textColor = color == colors_1.HIGHLIGHT_COLOR.BGblack ? colors_1.TEXT_COLOR.white : colors_1.TEXT_COLOR.black;
-    return ' ' + colors_1.reset + color + textColor + ' ';
+    const formatString = ` ${colors_1.reset}${color}${textColor} `;
+    return formatString;
 };

@@ -33,10 +33,10 @@ const defaultFormat: cliColorLayout = {
 
 let settings = {
   format: defaultFormat,
-  width: 80,
+  width: 70,
   colorLog: true,
-  prompt: '|>',
-  promptConfirm: '|=> ',
+  prompt: '|> ',
+  promptConfirm: '|=>',
   promptReject: '|-|',
   programName: '',
 }

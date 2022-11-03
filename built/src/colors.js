@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.reset = exports.reverse = exports.blink = exports.hidden = exports.underscore = exports.HIGHLIGHT_COLOR = exports.TEXT_COLOR = void 0;
+exports.spacedReset = exports.reset = exports.reverse = exports.blink = exports.hidden = exports.underscore = exports.HIGHLIGHT_COLOR = exports.TEXT_COLOR = void 0;
 const underscore = '\x1b[4m';
 exports.underscore = underscore;
 const blink = '\x1b[5m';
@@ -11,6 +11,8 @@ const hidden = '\x1b[8m';
 exports.hidden = hidden;
 const reset = '\x1b[0m';
 exports.reset = reset;
+const spacedReset = ` ${reset} `;
+exports.spacedReset = spacedReset;
 var TEXT_COLOR;
 (function (TEXT_COLOR) {
     TEXT_COLOR["black"] = "\u001B[30m";
@@ -23,7 +25,8 @@ var TEXT_COLOR;
     TEXT_COLOR["white"] = "\u001B[37m";
     TEXT_COLOR["reset"] = "\u001B[0m";
     TEXT_COLOR["bright"] = "\u001B[1m";
-    TEXT_COLOR["dim"] = "\u001B[2m";
+    // dim = '\x1b[2m',
+    TEXT_COLOR["dim"] = "\u001B[30m";
 })(TEXT_COLOR || (TEXT_COLOR = {}));
 exports.TEXT_COLOR = TEXT_COLOR;
 var HIGHLIGHT_COLOR;

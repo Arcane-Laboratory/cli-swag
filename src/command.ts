@@ -1,7 +1,11 @@
+import { jesterCommand } from './animation'
+import { FORMAT } from './format'
+import { log } from './log'
+
 interface command {
   name: string
   aliases?: Array<string>
-  callback: () => Promise<boolean>
+  callback: () => Promise<any>
   description?: string
   minArgs?: number
   maxArgs?: number
@@ -12,13 +16,21 @@ const helpCommand: command = {
   aliases: ['cmds'],
   description: 'displays a list of commands',
   callback: async () => {
-    const helpText = [`I'm here to help!`]
-    commands.forEach((command) =>
+    const helpText = [`There are ${commands.length} commands available to use:`]
+    commands.forEach((command, i) => {
       helpText.push(
-        command.name + command.description ? ` - ${command.description}` : ''
+        `${FORMAT.MAJOR.trim()}${command.name}${FORMAT.DEFAULT.trim()}${
+          command.description ? ` - ${command.description}` : ''
+        }`
       )
-    )
-    console.log(helpText.join('\n'))
+      if (command.aliases && command.aliases.length > 0)
+        helpText.push(
+          `${FORMAT.MINOR.trim()}  aka: ${command.aliases.join(
+            ', '
+          )}${FORMAT.DEFAULT.trim()}`
+        )
+    })
+    log(helpText.join('\n  '))
     return true
   },
 }
@@ -45,7 +57,7 @@ const usageInfo = (command: command): string => {
   return str.join('\n  ')
 }
 
-const commands: Array<command> = [helpCommand]
+const commands: Array<command> = [helpCommand, jesterCommand]
 
 const addCommand = (command: command) => {
   commands.push(command)

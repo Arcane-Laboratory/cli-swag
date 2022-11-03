@@ -1,8 +1,13 @@
 {
   "name": "cli-swag",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "swaggy command line interface",
-  "main": "/built/index.js",
+  "main": "./built/index.ts",
+  "types": "./built/index.d.ts",
+  "exports": {
+    "require": "./built/index.js",
+    "types": "./built/index.d.ts"
+  },
   "scripts": {
     "tsc": "tsc",
     "test": "test"

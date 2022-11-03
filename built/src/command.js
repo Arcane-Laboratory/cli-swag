@@ -1,14 +1,21 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.addCommands = exports.addCommand = exports.usageInfo = exports.commands = void 0;
+const animation_1 = require("./animation");
+const format_1 = require("./format");
+const log_1 = require("./log");
 const helpCommand = {
     name: 'help',
     aliases: ['cmds'],
     description: 'displays a list of commands',
     callback: async () => {
-        const helpText = [`I'm here to help!`];
-        commands.forEach((command) => helpText.push(command.name + command.description ? ` - ${command.description}` : ''));
-        console.log(helpText.join('\n'));
+        const helpText = [`There are ${commands.length} commands available to use:`];
+        commands.forEach((command, i) => {
+            helpText.push(`${format_1.FORMAT.MAJOR.trim()}${command.name}${format_1.FORMAT.DEFAULT.trim()}${command.description ? ` - ${command.description}` : ''}`);
+            if (command.aliases && command.aliases.length > 0)
+                helpText.push(`${format_1.FORMAT.MINOR.trim()}  aka: ${command.aliases.join(', ')}${format_1.FORMAT.DEFAULT.trim()}`);
+        });
+        (0, log_1.log)(helpText.join('\n  '));
         return true;
     },
 };
@@ -37,7 +44,7 @@ const usageInfo = (command) => {
     return str.join('\n  ');
 };
 exports.usageInfo = usageInfo;
-const commands = [helpCommand];
+const commands = [helpCommand, animation_1.jesterCommand];
 exports.commands = commands;
 const addCommand = (command) => {
     commands.push(command);

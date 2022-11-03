@@ -27,19 +27,30 @@ const runCLI = () => {
         prompt: prompt,
     });
     cli.on('line', async (line) => {
+        line = line.trim();
         let foundCommand;
+        if (line == '') {
+            (0, readline_1.moveCursor)(process.stdout, 0, -1);
+            cli?.prompt();
+            return;
+        }
         command_1.commands.forEach((cliCommand) => {
-            if (cliCommand.name == line.trim()) {
+            if (cliCommand.name == line) {
                 foundCommand = cliCommand;
                 return;
             }
+            cliCommand.aliases?.forEach((alias) => {
+                if (alias == line)
+                    foundCommand = cliCommand;
+                return;
+            });
         });
         if (foundCommand) {
             await (0, util_1.sleep)(200);
             (0, readline_1.clearLine)(process.stdout, 0);
             (0, readline_1.moveCursor)(process.stdout, 0, -1);
             (0, readline_1.clearLine)(process.stdout, 0);
-            process.stdout.write(format_1.FORMAT.MAJOR + init_1.settings.promptConfirm + line + colors_1.reset + '\n');
+            process.stdout.write(format_1.FORMAT.MAJOR + init_1.settings.promptConfirm + line + colors_1.spacedReset + '\n');
             await (0, util_1.sleep)(200);
             await foundCommand.callback();
             cli?.prompt();
@@ -50,10 +61,10 @@ const runCLI = () => {
             (0, readline_1.clearLine)(process.stdout, 0);
             process.stdout.write(format_1.FORMAT.MAJOR +
                 init_1.settings.promptReject +
-                format_1.FORMAT.MINOR +
+                format_1.FORMAT.MINOR.trim() +
                 line +
-                colors_1.reset +
-                '/n');
+                colors_1.spacedReset +
+                '\n');
             (0, log_1.log)(`No command found '${line}'. Use 'help' for a list of commands`);
             cli?.prompt();
         }
@@ -62,7 +73,7 @@ const runCLI = () => {
         'CLI: LOADED' +
         format_1.FORMAT.HIGHLIGHT.MAJOR +
         command_1.commands.length +
-        colors_1.reset +
+        colors_1.spacedReset +
         'CLI COMMANDS', true);
     return cli;
 };

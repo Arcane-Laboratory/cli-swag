@@ -19,7 +19,7 @@ const warn = (title, message) => {
         ' ' +
         title +
         colors_1.spacedReset;
-    log(fancyTitle);
+    log(fancyTitle, true);
     log(message, true);
 };
 exports.warn = warn;

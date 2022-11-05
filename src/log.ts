@@ -19,7 +19,7 @@ const warn = (title: string, message: string) => {
     ' ' +
     title +
     spacedReset
-  log(fancyTitle)
+  log(fancyTitle, true)
   log(message, true)
 }
 

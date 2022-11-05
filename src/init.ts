@@ -33,7 +33,7 @@ interface cliColorLayout {
 const defaultColor: COLOR = 'BLUE'
 let settings: cliSettingsFull = {
   color: defaultColor,
-  width: 70,
+  width: 65,
   prompt: '|> ',
   promptConfirm: '|=>',
   promptReject: '|-|',

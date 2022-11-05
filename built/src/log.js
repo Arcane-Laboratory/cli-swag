@@ -76,7 +76,7 @@ const logBar = (style) => {
             char = '+';
             break;
     }
-    const str = format_1.FORMAT.MAJOR + char.repeat(init_1.settings.width) + colors_1.reset + '\n';
+    const str = format_1.FORMAT.MAJOR.trim() + char.repeat(init_1.settings.width) + colors_1.reset + '\n';
     (0, readline_1.clearLine)(process.stdout, 0);
     (0, readline_1.cursorTo)(process.stdout, 0);
     process.stdout.write(str);

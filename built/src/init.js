@@ -6,7 +6,7 @@ const format_1 = require("./format");
 const defaultColor = 'BLUE';
 let settings = {
     color: defaultColor,
-    width: 70,
+    width: 65,
     prompt: '|> ',
     promptConfirm: '|=>',
     promptReject: '|-|',

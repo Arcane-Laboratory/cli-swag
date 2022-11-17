@@ -1,7 +1,7 @@
 interface command {
     name: string;
     aliases?: Array<string>;
-    callback: () => Promise<any>;
+    callback: (args: Array<any>) => Promise<any>;
     description?: string;
     minArgs?: number;
     maxArgs?: number;

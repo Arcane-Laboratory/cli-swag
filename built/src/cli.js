@@ -34,13 +34,15 @@ const runCLI = () => {
             cli?.prompt();
             return;
         }
+        const args = line.split(' ');
+        const commandName = args.splice(0, 1)[0];
         command_1.commands.forEach((cliCommand) => {
-            if (cliCommand.name == line) {
+            if (cliCommand.name == commandName) {
                 foundCommand = cliCommand;
                 return;
             }
             cliCommand.aliases?.forEach((alias) => {
-                if (alias == line)
+                if (alias == commandName)
                     foundCommand = cliCommand;
                 return;
             });

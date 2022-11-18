@@ -74,7 +74,6 @@ const logBar = (style: number) => {
       char = '+'
       break
   }
-
   const str = FORMAT.MAJOR.trim() + char.repeat(settings.width) + reset + '\n'
   clearLine(process.stdout, 0)
   cursorTo(process.stdout, 0)

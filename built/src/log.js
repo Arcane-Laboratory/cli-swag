@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.logHold = exports.addToLogBuffer = exports.logBar = exports.log = exports.warn = exports.lineLimit = exports.writeLogBuffer = void 0;
+exports.bufferPromise = exports.bufferActive = exports.logHold = exports.addToLogBuffer = exports.logBar = exports.log = exports.warn = exports.lineLimit = exports.writeLogBuffer = void 0;
 const readline_1 = require("readline");
 const cli_1 = require("./cli");
 const colors_1 = require("./colors");
@@ -20,14 +20,18 @@ const warn = (title, message) => {
         title +
         colors_1.spacedReset;
     log(fancyTitle, true);
-    log(message, true);
+    log(colors_1.TEXT.YELLOW + message + colors_1.TEXT.reset, true);
 };
 exports.warn = warn;
 let bufferActive = false;
+exports.bufferActive = bufferActive;
+let bufferPromise;
+exports.bufferPromise = bufferPromise;
 const logHold = async (promise) => {
-    bufferActive = true;
+    exports.bufferActive = bufferActive = true;
+    exports.bufferPromise = bufferPromise = promise;
     await promise;
-    bufferActive = false;
+    exports.bufferActive = bufferActive = false;
     return (0, exports.writeLogBuffer)();
 };
 exports.logHold = logHold;
@@ -83,17 +87,17 @@ const logBar = (style) => {
     return str;
 };
 exports.logBar = logBar;
-const initLogBuffer = [];
+const logBuffer = [];
 const addToLogBuffer = async (str, skipSpacing) => {
-    initLogBuffer.push({
+    logBuffer.push({
         message: str,
         skipSpacing: skipSpacing,
     });
 };
 exports.addToLogBuffer = addToLogBuffer;
 const writeLogBuffer = async () => {
-    for (; initLogBuffer.length > 0;) {
-        const l = initLogBuffer.splice(0, 1)[0];
+    for (; logBuffer.length > 0;) {
+        const l = logBuffer.splice(0, 1)[0];
         await (0, util_1.sleep)(15);
         log(l.message, l.skipSpacing);
     }

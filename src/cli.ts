@@ -3,7 +3,7 @@ import { reset, spacedReset } from './colors'
 import { command, commands } from './command'
 import { CHECK, colorCallout, FORMAT } from './format'
 import { settings } from './init'
-import { log } from './log'
+import { bufferActive, bufferPromise, log, logHold } from './log'
 import { sleep } from './util'
 
 let cli: Interface | undefined
@@ -54,8 +54,19 @@ const runCLI = () => {
       process.stdout.write(
         FORMAT.MAJOR + settings.promptConfirm + line + spacedReset + '\n'
       )
+      if (bufferActive)
+        try {
+          await bufferPromise
+        } catch (err) {}
       await sleep(200)
-      await foundCommand.callback()
+      try {
+        const callbackPromise = foundCommand.callback(args)
+        await logHold(callbackPromise) // so that we wait for the logging to finish
+        await callbackPromise // so that we can catch the error
+      } catch (err) {
+        console.log(err)
+        if (foundCommand.description) console.log(foundCommand.description)
+      }
       cli?.prompt()
     } else {
       clearLine(process.stdout, 0)

@@ -18,13 +18,14 @@ class Err extends Error {
             title +
             colors_1.spacedReset;
         super('\n' + message);
+        this.title = title;
+        this.message = message;
         this.name = fancyTitle.trim();
         Err.count++;
     }
     log(bufferOverride) {
         (0, log_1.log)('', false, bufferOverride);
-        (0, log_1.log)(this.name, true, bufferOverride);
-        (0, log_1.log)(this.message.substring(1).trim(), true, bufferOverride);
+        (0, log_1.log)(this.name + ': ' + this.message.trim(), true, bufferOverride);
     }
 }
 exports.Err = Err;

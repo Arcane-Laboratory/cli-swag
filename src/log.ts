@@ -1,6 +1,6 @@
 import { clearLine, cursorTo } from 'readline'
 import { cli } from './cli'
-import { reset, spacedReset } from './colors'
+import { reset, spacedReset, TEXT } from './colors'
 import { FORMAT } from './format'
 import { settings } from './init'
 import { sleep } from './util'
@@ -20,13 +20,15 @@ const warn = (title: string, message: string) => {
     title +
     spacedReset
   log(fancyTitle, true)
-  log(message, true)
+  log(TEXT.YELLOW + message + TEXT.reset, true)
 }
 
 let bufferActive = false
+let bufferPromise: Promise<any>
 
 const logHold = async (promise: Promise<any>) => {
   bufferActive = true
+  bufferPromise = promise
   await promise
   bufferActive = false
   return writeLogBuffer()
@@ -86,18 +88,18 @@ interface loggable {
   skipSpacing?: boolean
 }
 
-const initLogBuffer: Array<loggable> = []
+const logBuffer: Array<loggable> = []
 
 const addToLogBuffer = async (str: string, skipSpacing?: boolean) => {
-  initLogBuffer.push({
+  logBuffer.push({
     message: str,
     skipSpacing: skipSpacing,
   })
 }
 
 export const writeLogBuffer = async () => {
-  for (; initLogBuffer.length > 0; ) {
-    const l = initLogBuffer.splice(0, 1)[0]
+  for (; logBuffer.length > 0; ) {
+    const l = logBuffer.splice(0, 1)[0]
     await sleep(15)
     log(l.message, l.skipSpacing)
   }
@@ -110,4 +112,12 @@ export const lineLimit = (line: string, width): Array<string> => {
   return newLines
 }
 
-export { warn, log, logBar, addToLogBuffer, logHold }
+export {
+  warn,
+  log,
+  logBar,
+  addToLogBuffer,
+  logHold,
+  bufferActive,
+  bufferPromise,
+}

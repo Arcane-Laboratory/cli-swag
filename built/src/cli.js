@@ -53,8 +53,22 @@ const runCLI = () => {
             (0, readline_1.moveCursor)(process.stdout, 0, -1);
             (0, readline_1.clearLine)(process.stdout, 0);
             process.stdout.write(format_1.FORMAT.MAJOR + init_1.settings.promptConfirm + line + colors_1.spacedReset + '\n');
+            if (log_1.bufferActive)
+                try {
+                    await log_1.bufferPromise;
+                }
+                catch (err) { }
             await (0, util_1.sleep)(200);
-            await foundCommand.callback();
+            try {
+                const callbackPromise = foundCommand.callback(args);
+                await (0, log_1.logHold)(callbackPromise); // so that we wait for the logging to finish
+                await callbackPromise; // so that we can catch the error
+            }
+            catch (err) {
+                console.log(err);
+                if (foundCommand.description)
+                    console.log(foundCommand.description);
+            }
             cli?.prompt();
         }
         else {

@@ -1,6 +1,6 @@
 {
   "name": "cli-swag",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "swaggy command line interface",
   "main": "./built/index.ts",
   "types": "./built/index.d.ts",

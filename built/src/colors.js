@@ -20,6 +20,7 @@ var TEXT;
     TEXT["GREEN"] = "\u001B[32m";
     TEXT["YELLOW"] = "\u001B[33m";
     TEXT["ORANGE"] = "\u001B[38;5;202m";
+    TEXT["DARK_ORANGE"] = "\u001B[38;5;166m";
     // ORANGE = '\x1b[38; 5; 202m',
     TEXT["BLUE"] = "\u001B[34m";
     TEXT["MAGENTA"] = "\u001B[35m";
@@ -38,6 +39,7 @@ var HIGHLIGHT;
     HIGHLIGHT["GREEN"] = "\u001B[42m";
     HIGHLIGHT["YELLOW"] = "\u001B[43m";
     HIGHLIGHT["ORANGE"] = "\u001B[48;5;202m";
+    HIGHLIGHT["DARK_ORANGE"] = "\u001B[48;5;166m";
     HIGHLIGHT["BLUE"] = "\u001B[44m";
     HIGHLIGHT["MAGENTA"] = "\u001B[45m";
     HIGHLIGHT["CYAN"] = "\u001B[46m";

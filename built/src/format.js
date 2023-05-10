@@ -28,8 +28,8 @@ const enableColoredLogs = (color) => {
         DEFAULT: ' ' + colors_1.TEXT.reset + ' ',
         MAJOR: ' ' + colors_1.reset + colors_1.TEXT[color],
         MINOR: ' ' + colors_1.reset + colors_1.TEXT.dim,
-        WARN: WARN_HIGHLIGHT,
-        ERROR: ERR_HIGHLIGHT,
+        WARN: WARN,
+        ERROR: ERR,
         HIGHLIGHT: {
             DEFAULT: colors_1.HIGHLIGHT.WHITE,
             MAJOR: colors_1.HIGHLIGHT[color],

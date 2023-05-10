@@ -25,8 +25,8 @@ const enableColoredLogs = (color: COLOR) => {
     DEFAULT: ' ' + TEXT.reset + ' ',
     MAJOR: ' ' + reset + TEXT[color],
     MINOR: ' ' + reset + TEXT.dim,
-    WARN: WARN_HIGHLIGHT,
-      ERROR: ERR_HIGHLIGHT,
+    WARN: WARN,
+    ERROR: ERR,
     HIGHLIGHT: {
       DEFAULT: HIGHLIGHT.WHITE,
       MAJOR: HIGHLIGHT[color],

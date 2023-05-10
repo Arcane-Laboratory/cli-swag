@@ -20,7 +20,7 @@ const warn = (title: string, message: string) => {
     title +
     spacedReset
   log(fancyTitle, true)
-  log(TEXT.YELLOW + message + TEXT.reset, true)
+  log(FORMAT.WARN + message + FORMAT.DEFAULT, true)
 }
 
 let bufferActive = false

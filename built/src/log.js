@@ -20,7 +20,7 @@ const warn = (title, message) => {
         title +
         colors_1.spacedReset;
     log(fancyTitle, true);
-    log(colors_1.TEXT.YELLOW + message + colors_1.TEXT.reset, true);
+    log(format_1.FORMAT.WARN + message + format_1.FORMAT.DEFAULT, true);
 };
 exports.warn = warn;
 let bufferActive = false;

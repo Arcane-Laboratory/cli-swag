@@ -9,6 +9,8 @@ let FORMAT = {
     DEFAULT: ' ',
     MAJOR: '',
     MINOR: '',
+    WARN: '',
+    ERROR: '',
     HIGHLIGHT: {
         DEFAULT: ' ',
         MAJOR: ' ',
@@ -18,17 +20,21 @@ let FORMAT = {
 };
 exports.FORMAT = FORMAT;
 const enableColoredLogs = (color) => {
-    const ERR = color == 'RED' ? colors_1.HIGHLIGHT.MAGENTA : colors_1.HIGHLIGHT.RED;
-    const WARN = color == 'YELLOW' ? colors_1.HIGHLIGHT.CYAN : colors_1.HIGHLIGHT.YELLOW;
+    const ERR = color == 'RED' ? colors_1.TEXT.MAGENTA : colors_1.TEXT.RED;
+    const WARN = color == 'YELLOW' ? colors_1.TEXT.CYAN : colors_1.TEXT.YELLOW;
+    const ERR_HIGHLIGHT = color == 'RED' ? colors_1.HIGHLIGHT.MAGENTA : colors_1.HIGHLIGHT.RED;
+    const WARN_HIGHLIGHT = color == 'YELLOW' ? colors_1.HIGHLIGHT.CYAN : colors_1.HIGHLIGHT.YELLOW;
     exports.FORMAT = FORMAT = {
         DEFAULT: ' ' + colors_1.TEXT.reset + ' ',
         MAJOR: ' ' + colors_1.reset + colors_1.TEXT[color],
         MINOR: ' ' + colors_1.reset + colors_1.TEXT.dim,
+        WARN: WARN_HIGHLIGHT,
+        ERROR: ERR_HIGHLIGHT,
         HIGHLIGHT: {
             DEFAULT: colors_1.HIGHLIGHT.WHITE,
             MAJOR: colors_1.HIGHLIGHT[color],
-            WARN: WARN,
-            ERROR: ERR,
+            WARN: WARN_HIGHLIGHT,
+            ERROR: ERR_HIGHLIGHT,
         },
     };
     exports.CHECK = CHECK = ' ' + colors_1.TEXT[color] + '✓' + colors_1.reset + ' ';

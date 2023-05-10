@@ -5,6 +5,8 @@ declare let FORMAT: {
     DEFAULT: string;
     MAJOR: string;
     MINOR: string;
+    WARN: string;
+    ERROR: string;
     HIGHLIGHT: {
         DEFAULT: string;
         MAJOR: string;

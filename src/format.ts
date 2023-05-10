@@ -7,6 +7,8 @@ let FORMAT = {
   DEFAULT: ' ',
   MAJOR: '',
   MINOR: '',
+  WARN: '',
+  ERROR: '',
   HIGHLIGHT: {
     DEFAULT: ' ',
     MAJOR: ' ',
@@ -15,17 +17,21 @@ let FORMAT = {
   },
 }
 const enableColoredLogs = (color: COLOR) => {
-  const ERR = color == 'RED' ? HIGHLIGHT.MAGENTA : HIGHLIGHT.RED
-  const WARN = color == 'YELLOW' ? HIGHLIGHT.CYAN : HIGHLIGHT.YELLOW
+  const ERR = color == 'RED' ? TEXT.MAGENTA : TEXT.RED
+  const WARN = color == 'YELLOW' ? TEXT.CYAN : TEXT.YELLOW
+  const ERR_HIGHLIGHT = color == 'RED' ? HIGHLIGHT.MAGENTA : HIGHLIGHT.RED
+  const WARN_HIGHLIGHT = color == 'YELLOW' ? HIGHLIGHT.CYAN : HIGHLIGHT.YELLOW
   FORMAT = {
     DEFAULT: ' ' + TEXT.reset + ' ',
     MAJOR: ' ' + reset + TEXT[color],
     MINOR: ' ' + reset + TEXT.dim,
+    WARN: WARN_HIGHLIGHT,
+      ERROR: ERR_HIGHLIGHT,
     HIGHLIGHT: {
       DEFAULT: HIGHLIGHT.WHITE,
       MAJOR: HIGHLIGHT[color],
-      WARN: WARN,
-      ERROR: ERR,
+      WARN: WARN_HIGHLIGHT,
+      ERROR: ERR_HIGHLIGHT,
     },
   }
   CHECK = ' ' + TEXT[color] + '✓' + reset + ' '
